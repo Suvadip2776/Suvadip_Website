@@ -1,0 +1,42 @@
+# jemdoc: menu{MENU}{research.html}, nofooter  
+==Research
+
+== 2025
+- [https://arxiv.org/abs/2508.03613 Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction]\n
+  Yong Lin, Shange Tang, Bohan Lyu, Ziran Yang, Jui-Hui Chung, Haoyu Zhao, Lai Jiang, Yihan Geng, *Jiawei Ge*, Jingruo Sun, Jiayun Wu, Jiri Gesi, Ximing Lu, David Acuna, Kaiyu Yang, Hongzhou Lin, Yejin Choi, Danqi Chen, Sanjeev Arora, Chi Jin\n
+
+- [https://arxiv.org/abs/2507.07313 Frontier LLMs Still Struggle with Simple Reasoning Tasks]\n
+  Alan Malek\*, *Jiawei Ge\**, Nevena Lazic, Chi Jin, András György, Csaba Szepesvári (*=equal contribution)\n
+
+- [https://arxiv.org/abs/2505.22622 Principled Out-of-Distribution Generalization via Simplicity]\n
+  *Jiawei Ge*, Amanda Wang, Shange Tang, Chi Jin\n
+
+- [https://arxiv.org/abs/2502.06671 Covariates-Adjusted Mixed-Membership Estimation: A Novel Network Model with Optimal Guarantees]\n
+  Jianqing Fan, *Jiawei Ge*, Jikai Hou *(alphabetical order)*\n
+  Annals of Statistics (AOS) under major revision \n
+
+- [https://arxiv.org/abs/2502.06453 MATH-Perturb: Benchmarking LLMs' Math Reasoning Abilities against Hard Perturbations]\n
+  Kaixuan Huang, Jiacheng Guo, Zihao Li, Xiang Ji, *Jiawei Ge*, Wenzhe Li, Yingqing Guo, Tianle Cai, Hui Yuan, Runzhe Wang, Yue Wu, Ming Yin, Shange Tang, Yangsibo Huang, Chi Jin, Xinyun Chen, Chiyuan Zhang, Mengdi Wang\n
+  Forty-Second International Conference on Machine Learning (ICML 2025)\n
+
+== 2024
+- [https://arxiv.org/abs/2406.04201 Securing Equal Share: A Principled Approach for Learning Multiplayer Symmetric Games]\n
+  *Jiawei Ge\**, Yuanhao Wang\*, Wenzhe Li, Chi Jin (*=equal contribution)\n
+  Forty-Second International Conference on Machine Learning (ICML 2025)\n
+
+- [https://arxiv.org/abs/2405.10302 Optimal Aggregation of Prediction Intervals under Unsupervised Domain Shift]\n
+  *Jiawei Ge\**, Debarghya Mukherjee\*, Jianqing Fan (*=equal contribution)\n
+  The Thirty-Eighth Annual Conference on Neural Information Processing Systems (NeurIPS 2024)\n
+
+== 2023
+- [https://arxiv.org/abs/2311.15961 Maximum Likelihood Estimation is All You Need for Well-Specified Covariate Shift]\n
+  *Jiawei Ge\**, Shange Tang\*, Jianqing Fan, Cong Ma, Chi Jin (*=equal contribution)\n
+  International Conference on Learning Representations (ICLR), 2024\n
+  
+- [https://arxiv.org/abs/2306.16549 UTOPIA: Universally Trainable Optimal Prediction Intervals Aggregation]\n
+  Jianqing Fan, *Jiawei Ge*, Debarghya Mukherjee *(alphabetical order)*\n
+  Journal of Econometrics (JOE) under major revision\n
+  
+- [https://arxiv.org/abs/2303.01566 On the Provable Advantage of Unsupervised Pretraining]\n
+  *Jiawei Ge\**, Shange Tang\*, Jianqing Fan, Chi Jin (*=equal contribution)\n
+  International Conference on Learning Representations (ICLR), 2024 ({{<font color=red size=+0.5><b>}}Spotlight{{</b></font>}})\n

@@ -1,0 +1,45 @@
+# jemdoc: menu{MENU}{index.html}, nofooter  
+==Jiawei Ge
+
+~~~
+{}{img_left}{bio.jpg}{}{250}{320}{}
+I am a fifth-year Ph.D. student in the Department of [https://orfe.princeton.edu/home Operations Research and Financial Engineering] at Princeton University under the supervision of Professor [https://fan.princeton.edu/ Jianqing Fan] and Professor [https://sites.google.com/view/cjin/home Chi Jin]. Before coming to Princeton, I received my bachelor's degree from School of Mathematics at Fudan University in 2021. My research focuses on developing statistical foundations and efficient algorithms that turn vast, heterogeneous data into trustworthy AI systems.\n
+\n
+From July 2026 to June 2027, I will be a postdoctoral researcher in the [https://statistics.berkeley.edu/ Department of Statistics] at UC Berkeley, working with Professor [https://www.stat.berkeley.edu/~ryantibs/ Ryan Tibshirani]. In July 2027, I will join the [https://stat.cornell.edu/ Department of Statistics and Data Science] at Cornell University as a tenure-track Assistant Professor.\n
+\n
+*E-mail*: /jg5300/ \[@\] princeton \[DOT\] edu\n
+\n
+*[https://scholar.google.com/citations?user=480drckAAAAJ&hl=en Google Scholar]*,\ 
+*[CV.pdf CV]*
+\n
+\n
+*Research interests*
+- LLMs understanding;
+- Unsupervised pretraining;
+- Out-of-distribution generalization (OOD);
+- Benchmarking LLMs;
+- Networks;
+- Uncertainty quantification.
+~~~
+
+== News
+- I'm honored to receive the [https://engineering.princeton.edu/news/2024/09/27/award-excellence-honors-graduate-student-achievement-5 School of Engineering and Applied Science Award for Excellence]. (Sep, 2024)
+
+== Featured projects
+- *Developing reliable and interpretable agents*\n
+ -- Ge, J., Tang, S., Fan, J. and Jin, C., 2023. [https://arxiv.org/abs/2303.01566 On the Provable Advantage of Unsupervised Pretraining]. ICLR 2024.
+ -- Ge, J., Tang, S., Fan, J., Ma, C. and Jin, C., 2023. [https://arxiv.org/abs/2311.15961 Maximum Likelihood Estimation is All You Need for Well-Specified Covariate Shift]. ICLR 2024.
+ -- Ge, J., Wang, A., Tang, S. and Jin, C., 2025. [https://arxiv.org/abs/2505.22622 Principled Out-of-Distribution Generalization via Simplicity]. arXiv preprint arXiv:2505.22622.
+ -- Ge, J., Wang, Y., Li, W. and Jin, C., 2024. [https://arxiv.org/abs/2406.04201 Securing Equal Share: A Principled Approach for Learning Multiplayer Symmetric Games]. ICML 2025.
+ -- Huang, K., Guo, J., Li, Z., Ji, X., Ge, J., Li, W., Guo, Y., Cai, T., Yuan, H., Wang, R. and Wu, Y., 2025. [https://arxiv.org/abs/2502.06453 MATH-Perturb: Benchmarking LLMs' Math Reasoning Abilities against Hard Perturbations]. ICML 2025.
+ -- Malek, A., Ge, J., Jin, C., György, A. and Szepesvári, C., 2025. [https://arxiv.org/abs/2507.07313 Frontier LLMs Still Struggle with Simple Reasoning Tasks]. arXiv preprint arXiv:2507.07313.
+ -- Lin, Y., Tang, S., Lyu, B., Yang, Z., Chung, J.H., Zhao, H., Jiang, L., Geng, Y., Ge, J., Sun, J. and Wu, J., 2025. [https://arxiv.org/abs/2508.03613 Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction]. arXiv preprint arXiv:2508.03613.
+- *Network modeling*\n
+ -- Fan, J., Ge, J. and Hou, J., 2025. [https://arxiv.org/abs/2502.06671 Covariates-Adjusted Mixed-Membership Estimation: A Novel Network Model with Optimal Guarantees]. Annals of Statistics under major revision.
+- *Uncertainty quantification*\n
+ -- Fan, J., Ge, J. and Mukherjee, D., 2023. [https://arxiv.org/abs/2306.16549 UTOPIA: Universally Trainable Optimal Prediction Intervals Aggregation]. Journal of Econometrics under major revision.
+ -- Ge, J., Mukherjee, D. and Fan, J., 2024. [https://arxiv.org/abs/2405.10302 Optimal Aggregation of Prediction Intervals under Unsupervised Domain Shift]t. NeurIPS 2024.
+
+
+
+
