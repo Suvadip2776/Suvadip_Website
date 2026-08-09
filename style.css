@@ -830,6 +830,14 @@ footer a {
   animation: chat-panel-in 0.18s ease;
 }
 
+/* The [hidden] attribute is how the launcher/close-button JS opens and
+   closes the panel. It needs higher specificity than the plain .chat-panel
+   rule above (display: flex), or a same-specificity, cascade-order tie
+   lets the flex rule win and the panel stays visible even when "hidden". */
+.chat-panel[hidden] {
+  display: none;
+}
+
 @keyframes chat-panel-in {
   from {
     opacity: 0;
