@@ -1,113 +1,70 @@
 /* ---------------------------------------------------------
-   "Ask Suvadip" — a scripted FAQ widget, not a real LLM.
-   Matches visitor questions against a fixed knowledge base
-   drawn entirely from the CV content already on this site, so
-   it can only ever talk about Suvadip's academic background —
-   no API key, no backend, no hallucination risk, no cost.
+   "Ask Suvadip" — a real AI assistant, powered by Google's
+   free-tier Gemini API, grounded on a fixed set of facts about
+   Suvadip Sana so it can only discuss his academic background.
+
+   SETUP (required before this works):
+   1. Get a free API key at https://aistudio.google.com/apikey
+      (no credit card required).
+   2. In Google AI Studio / Google Cloud Console, restrict the
+      key to your site's domain (HTTP referrer restriction),
+      e.g. "https://suvadip2776.github.io/*" — this is what
+      keeps the key safe even though it's visible in this
+      public JS file. Client-side calls from a static site have
+      no way to hide the key entirely; restriction is the fix.
+   3. Paste the key below in place of the placeholder.
    --------------------------------------------------------- */
 
 (function () {
   "use strict";
 
+  var GEMINI_API_KEY = "PASTE_YOUR_GEMINI_API_KEY_HERE";
+  var GEMINI_MODEL = "gemini-2.5-flash";
+  var MAX_TURNS_PER_SESSION = 20;
+
   var EMAIL = "ss2776@cornell.edu";
 
-  // Each entry: keywords (phrases checked via substring match) + answer (HTML).
-  // Order matters only as a tie-breaker — first sufficiently-matching entry wins.
-  var KNOWLEDGE_BASE = [
-    {
-      keywords: ["hello", "hi", "hey", "greetings", "howdy"],
-      answer:
-        "Hi! I'm <strong>Ask Suvadip</strong> — a simple FAQ assistant, not a general AI. I can answer questions about Suvadip's academic background: research, education, publications, awards, teaching, and how to reach him. What would you like to know?",
-    },
-    {
-      keywords: ["what are you", "are you real", "are you ai", "are you a bot", "chatbot"],
-      answer:
-        "I'm a scripted FAQ widget built into this site — not a general-purpose AI. I match your question against a fixed set of facts from Suvadip's CV, so I can't go off-topic or make things up. For anything I can't answer, email him directly at " +
-        EMAIL +
-        ".",
-    },
-    {
-      keywords: ["who is suvadip", "who are you", "about suvadip", "introduce", "tell me about him", "bio"],
-      answer:
-        "Suvadip Sana is a final-year PhD candidate in Statistics at Cornell University. His research sits at the intersection of <strong>AI alignment</strong> and <strong>computational social choice</strong> — building mathematically grounded frameworks for understanding and improving how AI systems make decisions under diverse human preferences.",
-    },
-    {
-      keywords: ["research interest", "interests", "what does he research", "what does he work on", "focus area", "field of study", "studying"],
-      answer:
-        "His research spans <strong>AI Value Alignment</strong>, <strong>Preference Learning</strong>, <strong>Democratic AI</strong>, and <strong>Behavioral Evaluation</strong>, with broader interests in AI Safety and the societal impacts of AI.",
-    },
-    {
-      keywords: ["advisor", "advisors", "mentor", "supervisor", "chair"],
-      answer:
-        "His PhD chair is <strong>Martin T. Wells</strong>, and he works closely with <strong>Lionel Levine</strong> and <strong>Moon Duchin</strong>.",
-    },
-    {
-      keywords: ["education", "degree", "university", "school", "phd", "where did he study", "where did he go to school", "college"],
-      answer:
-        "Suvadip is a PhD candidate in Statistics at Cornell University (2021–Spring 2027, expected). He also earned a Master's in Statistics at Cornell (2021–2024, GPA 3.93/4) and an M.Math (2021) and B.Math (2019) from the Indian Statistical Institute, Bengaluru.",
-    },
-    {
-      keywords: ["publication", "publications", "papers", "paper", "published", "journal", "conference"],
-      answer:
-        "Recent highlights include <strong>“EigenBench: A Comparative Behavioral Measure of Value Alignment”</strong> (ICLR 2026, Oral — top ~1%) and <strong>“Pluralistic Preference Alignment via Sortition-Weighted RLHF”</strong> (ICML 2026 workshop). See the <a href=\"research.html\">Research page</a> for the full list of publications, preprints, and technical reports.",
-    },
-    {
-      keywords: ["award", "awards", "honor", "honors", "prize", "fellowship"],
-      answer:
-        "Recent honors include the ICML 2026 Silver Reviewer Award, the Cornell Bowers CIS Social Impact and Service Award, and the Cornell PiTech Impact Fellowship. See the <a href=\"cv.html#awards\">CV page</a> for the full list.",
-    },
-    {
-      keywords: ["teach", "teaching", "ta ", " ta,", "course", "courses", "class", "classes", "instructor"],
-      answer:
-        "Suvadip has been a teaching assistant at Cornell for over a dozen courses, including Linear Algebra for Engineers, Probability Theory I & II, and Theory of Statistics. See the <a href=\"teaching.html\">Teaching page</a> for the full list.",
-    },
-    {
-      keywords: ["job market", "hiring", "available", "looking for a job", "faculty position", "postdoc", "industry position", "applying"],
-      answer:
-        "Yes — Suvadip is on the <strong>academic and industry job market for Fall 2026</strong>. His PhD is expected Spring 2027. Reach out at " +
-        EMAIL +
-        ".",
-    },
-    {
-      keywords: ["contact", "email", "reach him", "get in touch", "e-mail"],
-      answer: "You can reach Suvadip at <strong>" + EMAIL + "</strong>.",
-    },
-    {
-      keywords: ["cv", "resume", "download"],
-      answer:
-        "You can download his CV here: <a href=\"Suvadip_CV.pdf\">Suvadip_CV.pdf</a>, or see the full formatted version on the <a href=\"cv.html\">CV page</a>.",
-    },
-    {
-      keywords: ["internship", "intern", "work experience", "fellow", "worked at"],
-      answer:
-        "He's interned as a PiTech Impact Fellow with the NYC Council Data team (Summer 2026), a Summer Fellow at Cornell's Data and Democracy Lab (Summer 2025), and a Statistical Analyst Intern at Siemens Healthineers (2020).",
-    },
-    {
-      keywords: ["skill", "skills", "programming", "coding", "python", "software", "tools he uses"],
-      answer:
-        "He's proficient in Python and R (familiar with Matlab), and works with tools like PyTorch, HuggingFace, FastAPI, MCP servers, and VoteKit.",
-    },
-    {
-      keywords: ["github", "scholar", "google scholar", "website", "links"],
-      answer:
-        "His Google Scholar profile and GitHub are linked at the top of the <a href=\"index.html\">homepage</a>.",
-    },
-    {
-      keywords: ["timeline", "history", "journey", "career path", "when did he"],
-      answer:
-        "Check out the <a href=\"timeline.html\">Timeline page</a> for a year-by-year look at his academic journey from 2016 to today.",
-    },
-    {
-      keywords: ["thank", "thanks", "appreciate", "cheers"],
-      answer:
-        "You're welcome! Let me know if you have more questions about Suvadip's academic background.",
-    },
-  ];
-
-  var FALLBACK_ANSWER =
-    "I can only help with questions about Suvadip's academic background — his research, education, publications, awards, teaching, or how to contact him. Try one of the suggestions below, or email " +
+  var SYSTEM_PROMPT =
+    'You are "Ask Suvadip," an AI assistant embedded on Suvadip Sana\'s personal academic website. ' +
+    "Answer ONLY questions about Suvadip Sana's academic background, research, education, publications, " +
+    "awards, teaching, professional experience, and how to contact him — using ONLY the facts listed below. " +
+    "If a question is unrelated to Suvadip (general knowledge, other people, coding help, opinions, current events, etc.), " +
+    "politely say you can only help with questions about Suvadip and suggest emailing him instead. " +
+    "Never invent facts that are not listed below; if you don't know something, say so honestly and suggest " +
+    "emailing " +
     EMAIL +
-    " for anything else.";
+    ". Keep answers concise and warm — 2 to 4 sentences unless more detail is clearly needed. " +
+    "You may use **bold** for emphasis and plain URLs, but no other markdown.\n\n" +
+    "FACTS ABOUT SUVADIP SANA:\n" +
+    "- PhD candidate in Statistics, Cornell University (2021 – Spring 2027, expected). Chair: Martin T. Wells. " +
+    "Also works closely with Lionel Levine and Moon Duchin.\n" +
+    "- Master in Statistics, Cornell University (2021–2024, GPA 3.93/4).\n" +
+    "- M.Math (2021) and B.Math (2019), Indian Statistical Institute, Bengaluru — both First Division with Distinction.\n" +
+    "- Research interests: AI Value Alignment, Preference Learning, Democratic AI, Behavioral Evaluation, AI Safety, " +
+    "Computational Social Choice, Societal Impacts of AI, Probability Theory. His work sits at the intersection of " +
+    "AI alignment and computational social choice.\n" +
+    '- Publications: "EigenBench: A Comparative Behavioral Measure of Value Alignment" (ICLR 2026, Oral, ~top 1%); ' +
+    '"Pluralistic Preference Alignment via Sortition-Weighted RLHF" (ICML 2026 Pluralistic Alignment Workshop); ' +
+    '"Gradation of Arrow\'s Axioms" (submitted to Annals of Applied Statistics); "Mixing Times of Glauber Dynamics on ' +
+    'Masked Language Models" (submitted to NeurIPS 2026); "Statistical Aspects of Sortition" (in preparation). ' +
+    'Technical reports: "Quantitative Relaxations of Arrow\'s Axioms"; "A scalar matching factor on the Birkhoff ' +
+    'polytope characterizing permutation and uniform matrices."\n' +
+    "- Awards: ICML 2026 Silver Reviewer Award; Cornell Bowers CIS Social Impact and Service Award; Cornell PiTech " +
+    "Impact Fellowship; Tapia Conference Travel Award (2025); NSF Travel Award (2024); Cornell Graduate School " +
+    "Research Travel Grant (2024); Cornell PhD Graduate Fellowship (2021–2022, one of two incoming students); NBHM " +
+    "Master Scholarship; All India Rank-3 in the M.Stat entrance of ISI (2019); All India Rank-33 in IIT JAM (2019); " +
+    "ISI Teacher's Award (2016–2019).\n" +
+    "- Internships: PiTech Impact Fellow (AI Engineering Intern), NYC Council Data team (Summer 2026); Summer Fellow, " +
+    "Data and Democracy Lab, Cornell Brooks School of Public Policy (Summer 2025); Statistical Analyst Intern, " +
+    "Siemens Healthineers (2020).\n" +
+    "- Teaching assistant at Cornell for over a dozen courses since 2022, including Linear Algebra for Engineers, " +
+    "Probability Theory I & II, and Theory of Statistics.\n" +
+    "- Skills: Python and R (proficient), Matlab (familiar); PyTorch, HuggingFace, FastAPI, MCP servers, VoteKit, " +
+    "Git, RunPod.\n" +
+    "- On the academic and industry job market for Fall 2026. PhD expected Spring 2027.\n" +
+    "- Contact: " +
+    EMAIL +
+    ". CV, Google Scholar, and GitHub links are on the homepage.";
 
   var SUGGESTIONS = [
     "What does he research?",
@@ -116,21 +73,73 @@
     "What has he published?",
   ];
 
-  function findAnswer(message) {
-    var text = message.toLowerCase();
-    var best = null;
-    var bestScore = 0;
-    KNOWLEDGE_BASE.forEach(function (entry) {
-      var score = 0;
-      entry.keywords.forEach(function (kw) {
-        if (text.indexOf(kw) !== -1) score++;
-      });
-      if (score > bestScore) {
-        bestScore = score;
-        best = entry;
-      }
+  function escapeHTML(str) {
+    return str.replace(/[&<>"']/g, function (c) {
+      return (
+        { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[
+          c
+        ] || c
+      );
     });
-    return best ? best.answer : FALLBACK_ANSWER;
+  }
+
+  // Render trusted-only formatting (bold, bare links, newlines) on top of
+  // HTML-escaped model output — safe against anything the model might
+  // produce, since the raw text is never inserted unescaped.
+  function formatBotText(text) {
+    var html = escapeHTML(text);
+    html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    html = html.replace(
+      /(https?:\/\/[^\s<]+)/g,
+      '<a href="$1" target="_blank" rel="noopener">$1</a>'
+    );
+    html = html.replace(/\n/g, "<br>");
+    return html;
+  }
+
+  var history = [];
+
+  function callGemini(userText) {
+    history.push({ role: "user", parts: [{ text: userText }] });
+
+    var body = {
+      system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+      contents: history,
+      generationConfig: { temperature: 0.3, maxOutputTokens: 350 },
+    };
+
+    return fetch(
+      "https://generativelanguage.googleapis.com/v1beta/models/" +
+        GEMINI_MODEL +
+        ":generateContent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": GEMINI_API_KEY,
+        },
+        body: JSON.stringify(body),
+      }
+    ).then(function (res) {
+      if (!res.ok) {
+        throw new Error("Gemini API error: " + res.status);
+      }
+      return res.json();
+    }).then(function (data) {
+      var reply =
+        data &&
+        data.candidates &&
+        data.candidates[0] &&
+        data.candidates[0].content &&
+        data.candidates[0].content.parts &&
+        data.candidates[0].content.parts[0] &&
+        data.candidates[0].content.parts[0].text;
+      if (!reply) {
+        throw new Error("Empty response from Gemini");
+      }
+      history.push({ role: "model", parts: [{ text: reply }] });
+      return reply;
+    });
   }
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -145,17 +154,19 @@
     if (!launcher || !panel || !form || !input || !messagesEl) return;
 
     var opened = false;
+    var turnCount = 0;
 
-    function addMessage(text, sender, isHTML) {
+    function addMessage(content, sender, isHTML) {
       var row = document.createElement("div");
       row.className = "chat-message " + sender;
       if (isHTML) {
-        row.innerHTML = text;
+        row.innerHTML = content;
       } else {
-        row.textContent = text;
+        row.textContent = content;
       }
       messagesEl.appendChild(row);
       messagesEl.scrollTop = messagesEl.scrollHeight;
+      return row;
     }
 
     function renderSuggestions() {
@@ -179,7 +190,7 @@
       if (!opened) {
         opened = true;
         addMessage(
-          "Hi! I'm <strong>Ask Suvadip</strong> — a simple FAQ assistant covering Suvadip's academic background. Ask me about his research, education, publications, awards, or teaching.",
+          "Hi! I'm <strong>Ask Suvadip</strong> — an AI assistant grounded in Suvadip's CV. Ask me about his research, education, publications, awards, or teaching.",
           "bot",
           true
         );
@@ -209,19 +220,56 @@
       if (e) e.preventDefault();
       var value = input.value.trim();
       if (!value) return;
+
+      if (!GEMINI_API_KEY || GEMINI_API_KEY.indexOf("PASTE_") === 0) {
+        addMessage(value, "user", false);
+        input.value = "";
+        addMessage(
+          "This assistant isn't fully set up yet — please email " +
+            EMAIL +
+            " directly in the meantime.",
+          "bot",
+          false
+        );
+        return;
+      }
+
+      if (turnCount >= MAX_TURNS_PER_SESSION) {
+        addMessage(value, "user", false);
+        input.value = "";
+        addMessage(
+          "You've reached the message limit for this session — reload the page to continue, or email " +
+            EMAIL +
+            " directly.",
+          "bot",
+          false
+        );
+        return;
+      }
+
       addMessage(value, "user", false);
       input.value = "";
+      turnCount++;
 
-      var typing = document.createElement("div");
-      typing.className = "chat-message bot chat-typing";
-      typing.textContent = "…";
-      messagesEl.appendChild(typing);
-      messagesEl.scrollTop = messagesEl.scrollHeight;
+      var typing = addMessage("…", "bot", false);
+      typing.classList.add("chat-typing");
 
-      window.setTimeout(function () {
-        typing.remove();
-        addMessage(findAnswer(value), "bot", true);
-      }, 420);
+      callGemini(value)
+        .then(function (reply) {
+          typing.remove();
+          addMessage(formatBotText(reply), "bot", true);
+        })
+        .catch(function (err) {
+          console.error("Ask Suvadip / Gemini error:", err);
+          typing.remove();
+          addMessage(
+            "Sorry, I'm having trouble reaching the AI right now. Please email " +
+              EMAIL +
+              " directly, or try again in a moment.",
+            "bot",
+            false
+          );
+        });
     }
 
     form.addEventListener("submit", handleSubmit);
