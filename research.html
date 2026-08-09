@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      if (t) document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Research — Suvadip Sana</title>
 <meta name="description" content="Publications, preprints, and technical reports by Suvadip Sana on AI alignment and computational social choice." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="prof_profile_pic.jpeg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Research — Suvadip Sana" />
+<meta property="og:description" content="Publications, preprints, and technical reports by Suvadip Sana on AI alignment and computational social choice." />
+<meta property="og:url" content="https://suvadip2776.github.io/Suvadip_Website/research.html" />
+<meta property="og:image" content="https://suvadip2776.github.io/Suvadip_Website/prof_profile_pic.jpeg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Research — Suvadip Sana" />
+<meta name="twitter:description" content="Publications, preprints, and technical reports by Suvadip Sana on AI alignment and computational social choice." />
+<meta name="twitter:image" content="https://suvadip2776.github.io/Suvadip_Website/prof_profile_pic.jpeg" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,13 +31,16 @@
 <nav class="site-nav">
   <div class="wrap">
     <a href="index.html" class="brand">Suvadip Sana</a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="research.html" class="current">Research</a></li>
-      <li><a href="cv.html">CV</a></li>
-      <li><a href="timeline.html">Timeline</a></li>
-      <li><a href="teaching.html">Teaching</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html" class="current">Research</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+      </ul>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+    </div>
   </div>
 </nav>
 
@@ -29,17 +51,24 @@
 
 <main class="wrap">
 
-  <section>
+  <div class="filter-row" role="group" aria-label="Filter publications by topic">
+    <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="filter-btn" data-filter="alignment" aria-pressed="false">AI Alignment</button>
+    <button type="button" class="filter-btn" data-filter="social-choice" aria-pressed="false">Social Choice</button>
+    <button type="button" class="filter-btn" data-filter="probability" aria-pressed="false">Probability &amp; LLMs</button>
+  </div>
+
+  <section class="pub-section">
     <h2>Publications</h2>
 
-    <div class="entry">
+    <div class="entry" data-tags="alignment">
       <p class="entry-title">EigenBench: A Comparative Behavioral Measure of Value Alignment</p>
       <p class="entry-authors">Jonathn Chang, Leonhard Piff, <span class="me">Suvadip Sana</span>, Jasmine X. Li, Lionel Levine</p>
       <p class="entry-venue"><span class="badge">Oral · ~top 1%</span>Fourteenth International Conference on Learning Representations (ICLR), 2026</p>
       <p class="entry-links"><a href="https://openreview.net/pdf?id=fm79KXJIUQ">Paper</a></p>
     </div>
 
-    <div class="entry">
+    <div class="entry" data-tags="alignment social-choice">
       <p class="entry-title">Pluralistic Preference Alignment via Sortition-Weighted RLHF</p>
       <p class="entry-authors"><span class="me">Suvadip Sana</span>, Jinzhou Wu, Martin T. Wells</p>
       <p class="entry-venue">ICML 2026, Pluralistic Alignment Workshop</p>
@@ -47,41 +76,41 @@
     </div>
   </section>
 
-  <section>
+  <section class="pub-section">
     <h2>Under review / preprints / in preparation</h2>
 
-    <div class="entry">
+    <div class="entry" data-tags="social-choice">
       <p class="entry-title">Gradation of Arrow's Axioms</p>
       <p class="entry-authors"><span class="me">Suvadip Sana</span>, Peter Rock, Martin T. Wells, Moon Duchin</p>
       <p class="entry-venue">Submitted to Annals of Applied Statistics</p>
       <p class="entry-links"><a href="https://data-democracy.org/GAA">Preprint</a></p>
     </div>
 
-    <div class="entry">
+    <div class="entry" data-tags="probability">
       <p class="entry-title">Mixing Times of Glauber Dynamics on Masked Language Models</p>
       <p class="entry-authors"><span class="me">Suvadip Sana</span>, Sami Wolf, Neer Mehta, Alina Shah, Aitzaz Shaikh, Janna Goodman, Lionel Levine</p>
       <p class="entry-venue">Submitted to NeurIPS 2026</p>
       <p class="entry-links"><a href="https://arxiv.org/abs/2605.16378">Preprint</a></p>
     </div>
 
-    <div class="entry">
+    <div class="entry" data-tags="social-choice">
       <p class="entry-title">Statistical Aspects of Sortition</p>
       <p class="entry-authors"><span class="me">Suvadip Sana</span>, Martin T. Wells</p>
       <p class="entry-venue">In preparation</p>
     </div>
   </section>
 
-  <section>
+  <section class="pub-section">
     <h2>Other technical reports</h2>
 
-    <div class="entry">
+    <div class="entry" data-tags="social-choice">
       <p class="entry-title">Quantitative Relaxations of Arrow's Axioms</p>
       <p class="entry-authors"><span class="me">Suvadip Sana</span>, Daniel Brous, Martin T. Wells, Moon Duchin</p>
       <p class="entry-venue">Preliminary version of "Gradation of Arrow's Axioms"</p>
       <p class="entry-links"><a href="https://arxiv.org/pdf/2506.12961">arXiv:2506.12961</a></p>
     </div>
 
-    <div class="entry">
+    <div class="entry" data-tags="probability">
       <p class="entry-title">A scalar matching factor on the Birkhoff polytope characterizing permutation and uniform matrices</p>
       <p class="entry-authors"><span class="me">Suvadip Sana</span></p>
       <p class="entry-links"><a href="https://arxiv.org/pdf/2406.16284">arXiv:2406.16284</a></p>
@@ -97,6 +126,7 @@
   </div>
 </footer>
 
+<button type="button" class="back-to-top" aria-label="Back to top">↑</button>
 <script src="script.js" defer></script>
 </body>
 </html>

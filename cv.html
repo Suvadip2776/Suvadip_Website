@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      if (t) document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CV — Suvadip Sana</title>
 <meta name="description" content="Curriculum vitae of Suvadip Sana: education, experience, awards, talks, and service." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="prof_profile_pic.jpeg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="CV — Suvadip Sana" />
+<meta property="og:description" content="Curriculum vitae of Suvadip Sana: education, experience, awards, talks, and service." />
+<meta property="og:url" content="https://suvadip2776.github.io/Suvadip_Website/cv.html" />
+<meta property="og:image" content="https://suvadip2776.github.io/Suvadip_Website/prof_profile_pic.jpeg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="CV — Suvadip Sana" />
+<meta name="twitter:description" content="Curriculum vitae of Suvadip Sana: education, experience, awards, talks, and service." />
+<meta name="twitter:image" content="https://suvadip2776.github.io/Suvadip_Website/prof_profile_pic.jpeg" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,13 +31,16 @@
 <nav class="site-nav">
   <div class="wrap">
     <a href="index.html" class="brand">Suvadip Sana</a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="research.html">Research</a></li>
-      <li><a href="cv.html" class="current">CV</a></li>
-      <li><a href="timeline.html">Timeline</a></li>
-      <li><a href="teaching.html">Teaching</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="cv.html" class="current">CV</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+      </ul>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+    </div>
   </div>
 </nav>
 
@@ -33,6 +55,16 @@
 <main class="wrap">
 
   <p class="jobmarket">🎯 <strong>On the academic and industry job market for Fall 2026.</strong> Reach out at <a href="mailto:ss2776@cornell.edu">ss2776@cornell.edu</a>.</p>
+
+  <section>
+    <h2>Job market materials</h2>
+    <ul class="simple-list">
+      <li><span class="when">CV</span><span class="what"><a href="Suvadip_CV.pdf">Download PDF</a></span></li>
+      <li><span class="when">Research statement</span><span class="what">Available on request — <a href="mailto:ss2776@cornell.edu">email me</a></span></li>
+      <li><span class="when">Teaching statement</span><span class="what">Available on request — <a href="mailto:ss2776@cornell.edu">email me</a></span></li>
+      <li><span class="when">References</span><span class="what">Available on request — <a href="mailto:ss2776@cornell.edu">email me</a></span></li>
+    </ul>
+  </section>
 
   <section>
     <h2>Education</h2>
@@ -160,6 +192,7 @@
   </div>
 </footer>
 
+<button type="button" class="back-to-top" aria-label="Back to top">↑</button>
 <script src="script.js" defer></script>
 </body>
 </html>
