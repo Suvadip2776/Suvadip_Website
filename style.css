@@ -588,6 +588,23 @@ h3 {
   margin-bottom: 0;
 }
 
+.prose h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: -0.005em;
+  margin: 2.4rem 0 1rem;
+}
+
+.prose strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.prose em {
+  font-style: italic;
+}
+
 .placeholder-note {
   font-family: var(--font-serif);
   font-style: italic;

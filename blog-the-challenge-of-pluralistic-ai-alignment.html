@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      if (t) document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Challenge of Pluralistic AI Alignment — Suvadip Sana</title>
+<meta name="description" content="On pluralistic AI alignment, representative sampling via sortition, and the deeper question of who gets to decide what an aligned AI should value." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="prof_profile_pic.jpeg" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The Challenge of Pluralistic AI Alignment — Suvadip Sana" />
+<meta property="og:description" content="On pluralistic AI alignment, representative sampling via sortition, and the deeper question of who gets to decide what an aligned AI should value." />
+<meta property="og:url" content="https://suvadip2776.github.io/Suvadip_Website/blog-the-challenge-of-pluralistic-ai-alignment.html" />
+<meta property="og:image" content="https://suvadip2776.github.io/Suvadip_Website/prof_profile_pic.jpeg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="The Challenge of Pluralistic AI Alignment — Suvadip Sana" />
+<meta name="twitter:description" content="On pluralistic AI alignment, representative sampling via sortition, and the deeper question of who gets to decide what an aligned AI should value." />
+<meta name="twitter:image" content="https://suvadip2776.github.io/Suvadip_Website/prof_profile_pic.jpeg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">Suvadip Sana</a>
+    <div class="nav-right">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="miscellaneous.html">Miscellaneous</a></li>
+      </ul>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<header class="wrap page-header">
+  <p class="eyebrow">Blog · August 2026</p>
+  <h1>The Challenge of Pluralistic AI Alignment</h1>
+</header>
+
+<main class="wrap">
+
+  <article class="prose">
+    <p>When we talk about aligning AI with human values, there is an assumption hidden inside that phrase: that there is some well-defined set of <em>human values</em> for an AI system to align with.</p>
+
+    <p>I find that assumption increasingly difficult to accept.</p>
+
+    <p>Humans disagree about almost everything that matters. We disagree about politics, morality, fairness, religion, freedom, equality, punishment, privacy, and even what it means to live a good life. These disagreements are not necessarily mistakes that disappear once everyone has enough information. Reasonable people can look at the same facts and still reach very different conclusions.</p>
+
+    <p>So what exactly should it mean for an AI system to be "aligned with human values"?</p>
+
+    <p>One tempting answer is to collect enough human feedback, combine everyone's preferences into some aggregate objective, and train the model to behave according to it. This idea sits behind many preference-based alignment methods, including Reinforcement Learning from Human Feedback (RLHF).</p>
+
+    <p>But there is a problem even before we ask <em>how</em> those preferences should be aggregated:</p>
+
+    <p><strong>Who are the humans providing the feedback?</strong></p>
+
+    <h2>The people teaching AI are not necessarily "the public"</h2>
+
+    <p>In practice, obtaining feedback from everyone who might eventually use an AI system is impossible. Developers instead rely on pools of human raters who compare different model responses and indicate which ones they prefer.</p>
+
+    <p>But those raters are a sample of society, and not necessarily a representative one.</p>
+
+    <p>Imagine that an AI system is intended to serve millions of people, while the preferences used to align it come disproportionately from a particular demographic or social group. The resulting model might be very good at learning the preferences in its training data while still failing to represent the population it is supposed to serve.</p>
+
+    <p>This made me realize that pluralistic alignment is not only a question of <strong>what values we teach AI</strong>. It is also a question of <strong>who gets to participate in teaching them</strong>.</p>
+
+    <p>And that led me to one of the first approaches I explored: <strong>sortition</strong>.</p>
+
+    <h2>My first approach: let a representative mini-public teach the AI</h2>
+
+    <p>Sortition has a surprisingly old history.</p>
+
+    <p>Instead of electing representatives, sortition selects ordinary citizens through a lottery. Modern citizens' assemblies use versions of this idea to construct what are sometimes called <em>mini-publics</em>: relatively small groups selected to resemble the broader population across characteristics such as age, gender, geography, or other relevant dimensions.</p>
+
+    <p>I became interested in a simple question:</p>
+
+    <p><strong>What if we applied the same principle to AI alignment?</strong></p>
+
+    <p>Suppose we have preference data from thousands of people, but the people in that dataset do not accurately represent the population our AI system is supposed to serve. Rather than treating every observation as if it came from a perfectly representative population, we could explicitly correct for who is represented.</p>
+
+    <p>In our work on <strong>sortition-weighted preference learning</strong>, we explored two ways of doing this.</p>
+
+    <p>The first, which we call <strong>Hard Panel</strong>, is closest to a citizens' assembly. We use algorithmic sortition to select a smaller panel of raters whose demographic composition satisfies representation targets, and train the AI only from the preferences of this mini-public.</p>
+
+    <p>The second, <strong>Soft Panel</strong>, keeps everyone's preference data but changes how much influence each person's feedback receives. People are weighted according to their probability of being selected into the representative panel.</p>
+
+    <p>Conceptually, I like the distinction because it gives us two different answers to the same problem. We can either construct a representative public and listen to that public, or keep the larger dataset while correcting the influence different groups have on the learning process.</p>
+
+    <p>When we tested these ideas using real preference data and fine-tuned language models, the results were encouraging, although not universal. The representative Hard Panel performed best in one of our main experimental settings, while Soft Panel was more useful in settings where restricting ourselves to a small representative panel meant throwing away too much high-quality data.</p>
+
+    <p>That qualification matters.</p>
+
+    <p>I do not think sortition "solves" pluralistic alignment. What these experiments convinced me of is something more basic: <strong>the composition of the people providing feedback actually matters.</strong></p>
+
+    <p>And importantly, it is something we can make explicit.</p>
+
+    <p>Instead of saying that a model is aligned with "human preferences," we can ask a much more concrete set of questions: Which humans? From what population? How were they selected? Who was underrepresented? How much influence did each group have?</p>
+
+    <p>Those questions make alignment more auditable—and, in my view, more honest.</p>
+
+    <h2>Representation doesn't solve disagreement</h2>
+
+    <p>But even if sortition gave us a perfectly representative miniature version of society, we would still have another problem.</p>
+
+    <p>The people inside that representative panel would disagree.</p>
+
+    <p>Suppose 60% prefer one behavior and 40% strongly prefer another. Should the AI simply follow the majority? What if the minority has a much stronger preference? What happens when there are many competing groups rather than two? And what if the same minority repeatedly loses across thousands of decisions?</p>
+
+    <p>Representation tells us <strong>whose preferences should enter the process</strong>.</p>
+
+    <p>It does not tell us <strong>how conflicting preferences should become a collective decision</strong>.</p>
+
+    <p>This is where I think social choice theory becomes particularly relevant to AI. For centuries, economists, mathematicians, and political theorists have studied essentially the same problem: how can the preferences of many individuals be transformed into collective decisions?</p>
+
+    <p>AI alignment is beginning to encounter its own version of this old problem.</p>
+
+    <h2>Should AI even have one value system?</h2>
+
+    <p>There is an even more fundamental possibility.</p>
+
+    <p>Maybe aggregation itself is sometimes the wrong goal.</p>
+
+    <p>Imagine asking an AI about a genuinely controversial social question. Instead of producing whichever answer happens to win under its preference-aggregation procedure, perhaps a well-aligned system should understand that legitimate disagreement exists. It could recognize competing perspectives, explain where they agree and disagree, and respond appropriately to context without pretending that humanity has reached a consensus that does not exist.</p>
+
+    <p>In that sense, pluralism is not simply about making AI more "balanced."</p>
+
+    <p>It is about making AI's representation of humanity more accurate.</p>
+
+    <p>Human society is pluralistic. An AI system claiming to represent human values should somehow reflect that fact.</p>
+
+    <h2>But pluralism creates its own problems</h2>
+
+    <p>Pluralistic alignment is not a magic solution.</p>
+
+    <p>Some preferences are mutually incompatible. Some people may want AI systems to behave in ways that harm others. Personalized alignment can conflict with collective welfare. And treating every expressed preference as equally legitimate can itself lead to deeply undesirable outcomes.</p>
+
+    <p>At some point, an AI system must draw boundaries.</p>
+
+    <p>And then we encounter perhaps the hardest question in pluralistic alignment:</p>
+
+    <p><strong>Who gets to decide those boundaries?</strong></p>
+
+    <p>There is no purely technical answer. Better algorithms can help us represent preferences, measure disagreement, aggregate information, and understand trade-offs. But mathematics cannot independently tell society which values deserve protection or which compromises are morally legitimate.</p>
+
+    <p>That realization has changed how I think about alignment itself.</p>
+
+    <h2>Alignment is a collective-choice problem</h2>
+
+    <p>I increasingly think that AI alignment is not only a machine-learning problem. It is also a problem of collective decision-making.</p>
+
+    <p>As AI systems become more capable and are deployed across education, government, healthcare, workplaces, and everyday life, the question will not simply be whether these systems follow <em>our values</em>.</p>
+
+    <p>We first have to answer a much more uncomfortable question:</p>
+
+    <p><strong>Who are "we"?</strong></p>
+
+    <p>My work with sortition was one attempt at making that "we" more concrete. Instead of treating humanity as an abstract source of preferences, we can explicitly define the population an AI system is meant to serve and think carefully about how that population should be represented in the feedback used to train it.</p>
+
+    <p>But representation is only one piece of the puzzle.</p>
+
+    <p>We still need to understand how disagreements should be aggregated, when AI should preserve disagreement rather than resolve it, how minority preferences should be protected, and where the boundaries of acceptable pluralism should lie.</p>
+
+    <p>Pluralistic alignment does not make these questions disappear. If anything, it forces us to confront them directly.</p>
+
+    <p>And I think that is precisely its value.</p>
+
+    <p>Instead of pretending that humanity possesses a single coherent objective waiting to be learned, we can begin with the world as it actually exists: billions of people holding overlapping, conflicting, evolving, and sometimes irreconcilable values.</p>
+
+    <p>The challenge is not to erase those differences.</p>
+
+    <p><strong>The challenge is to build AI systems that can live with them.</strong></p>
+  </article>
+
+  <p><a href="blog.html">← Back to all posts</a></p>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 Suvadip Sana. Built with care ·
+    <a href="https://github.com/Suvadip2776/Suvadip_Website">Site source</a>
+  </div>
+</footer>
+
+<button type="button" class="back-to-top" aria-label="Back to top">↑</button>
+<script src="script.js" defer></script>
+</body>
+</html>
