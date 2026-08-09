@@ -60,31 +60,6 @@
     tick();
   }
 
-  /* ---- Reveal-on-scroll for the timeline ---- */
-  var tlItems = document.querySelectorAll(".tl-item");
-  if (tlItems.length) {
-    if (reduceMotion || !("IntersectionObserver" in window)) {
-      tlItems.forEach(function (el) {
-        el.classList.add("in-view");
-      });
-    } else {
-      var observer = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("in-view");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-      );
-      tlItems.forEach(function (el) {
-        observer.observe(el);
-      });
-    }
-  }
-
   /* ---- Theme toggle ---- */
   var root = document.documentElement;
   var toggleBtn = document.querySelector("[data-theme-toggle]");

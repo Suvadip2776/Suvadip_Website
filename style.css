@@ -616,71 +616,87 @@ section > .subhead:first-of-type {
   }
 }
 
-/* ---------- Timeline ---------- */
+/* ---------- Journey (horizontal timeline strip) ---------- */
 
-.timeline {
+.journey {
+  padding-bottom: 0.5rem;
+}
+
+.h-timeline {
   position: relative;
-  margin: 0.5rem 0 1rem 0.2rem;
-  padding-left: 2.3rem;
-  border-left: 1px solid var(--border);
+  display: flex;
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+  padding-bottom: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
 }
 
-.tl-item {
-  position: relative;
-  padding-bottom: 2.6rem;
-  opacity: 1;
-  transform: none;
-}
-
-.tl-item:last-child {
-  padding-bottom: 0.2rem;
-}
-
-.tl-dot {
+.h-timeline::before {
+  content: "";
   position: absolute;
-  left: -2.42rem;
-  top: 0.55rem;
-  width: 9px;
-  height: 9px;
-  background: var(--accent);
-  transform: rotate(45deg);
-  box-shadow: 0 0 0 5px var(--bg);
+  left: 0;
+  right: 0;
+  top: 5px;
+  height: 1px;
+  background: var(--border);
 }
 
-.tl-year {
+.h-timeline-item {
+  position: relative;
+  flex: 1 0 140px;
+  text-align: center;
+  scroll-snap-align: start;
+  transition: transform 0.2s ease;
+}
+
+.h-timeline-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 0 auto 1.1rem;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px var(--bg);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+.h-timeline-year {
+  display: block;
   font-family: var(--font-serif);
   font-weight: 600;
-  font-size: 1.7rem;
+  font-size: 2.3rem;
+  line-height: 1;
   letter-spacing: -0.01em;
   color: var(--text);
-  margin-bottom: 0.6rem;
+  transition: color 0.2s ease;
 }
 
-.tl-events {
-  margin: 0;
-  padding-left: 1.1rem;
+.h-timeline-label {
+  margin: 0.5rem auto 0;
+  max-width: 170px;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  line-height: 1.4;
   color: var(--text-soft);
-  font-size: 0.94rem;
 }
 
-.tl-events li {
-  margin-bottom: 0.4rem;
+.h-timeline-item:hover .h-timeline-dot {
+  transform: scale(1.35);
 }
 
-.tl-events strong {
-  color: var(--text);
-  font-weight: 700;
+.h-timeline-item:hover .h-timeline-year {
+  color: var(--accent);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .tl-item {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+@media (max-width: 640px) {
+  .h-timeline-year {
+    font-size: 1.8rem;
   }
-  .tl-item.in-view {
-    opacity: 1;
-    transform: none;
+  .h-timeline-item {
+    flex: 1 0 120px;
   }
 }
 
@@ -779,7 +795,6 @@ footer a {
     text-decoration: underline;
   }
   .entry,
-  .tl-item,
   .simple-list li {
     break-inside: avoid;
   }
