@@ -415,6 +415,91 @@ section > .subhead:first-of-type {
   margin-top: 0;
 }
 
+/* ---------- Typewriter ---------- */
+
+.typewriter {
+  border-right: 2px solid var(--accent);
+  padding-right: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .typewriter {
+    animation: caret 0.9s steps(1) infinite;
+  }
+}
+
+@keyframes caret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* ---------- Timeline ---------- */
+
+.timeline {
+  position: relative;
+  margin: 0.5rem 0 1rem 0.4rem;
+  padding-left: 1.7rem;
+  border-left: 2px solid var(--border);
+}
+
+.tl-item {
+  position: relative;
+  padding-bottom: 2.4rem;
+  opacity: 1;
+  transform: none;
+}
+
+.tl-item:last-child {
+  padding-bottom: 0.2rem;
+}
+
+.tl-dot {
+  position: absolute;
+  left: -2.05rem;
+  top: 0.35rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.tl-year {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.tl-events {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.tl-events li {
+  margin-bottom: 0.4rem;
+}
+
+.tl-events strong {
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tl-item {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .tl-item.in-view {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ---------- Footer ---------- */
 
 footer {
