@@ -188,6 +188,29 @@ a:hover {
   text-decoration: none;
 }
 
+/* ---------- Job market banner ---------- */
+
+.jobmarket {
+  margin-top: 1.6rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.jobmarket strong {
+  color: var(--accent);
+}
+
+.jobmarket a {
+  font-weight: 600;
+}
+
 /* ---------- Sections ---------- */
 
 main {
