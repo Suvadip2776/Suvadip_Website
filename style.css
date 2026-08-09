@@ -1,62 +1,62 @@
 /* ---------------------------------------------------------
    Suvadip Sana — personal academic site
+   Elegant editorial theme: serif display type, warm parchment
+   palette, hairline rules in place of boxed cards.
    --------------------------------------------------------- */
 
 :root {
-  --bg: #ffffff;
-  --bg-soft: #f6f7f9;
-  --text: #1c2430;
-  --text-soft: #52606d;
-  --border: #e3e7ec;
-  --accent: #1d4e89;
-  --accent-soft: #eaf1fb;
-  --tag-bg: #eef2f7;
-  --tag-text: #3c4a5c;
-  --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
-  --max-width: 880px;
+  --bg: #faf6ef;
+  --bg-soft: #f2ebdd;
+  --text: #221f19;
+  --text-soft: #6d6455;
+  --border: #e1d7c2;
+  --accent: #a8471f;
+  --accent-soft: #f3e2d2;
+  --tag-text: #7a4326;
+  --shadow: 0 1px 2px rgba(60, 43, 20, 0.05), 0 2px 6px rgba(60, 43, 20, 0.06);
+  --font-serif: "Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --max-width: 860px;
   font-size: 17px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #14181f;
-    --bg-soft: #1b212b;
-    --text: #e7ebf0;
-    --text-soft: #9aa6b2;
-    --border: #2a323e;
-    --accent: #6ea8e8;
-    --accent-soft: #1c2a3d;
-    --tag-bg: #202836;
-    --tag-text: #c2cbd6;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.4);
+    --bg: #1c1710;
+    --bg-soft: #251f16;
+    --text: #f1ebe0;
+    --text-soft: #ada08b;
+    --border: #3b3323;
+    --accent: #e08a4f;
+    --accent-soft: #382a1b;
+    --tag-text: #e0a06a;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.4);
   }
 }
 
-/* Explicit theme override (set by the light/dark toggle) wins in both directions */
 :root[data-theme="dark"] {
-  --bg: #14181f;
-  --bg-soft: #1b212b;
-  --text: #e7ebf0;
-  --text-soft: #9aa6b2;
-  --border: #2a323e;
-  --accent: #6ea8e8;
-  --accent-soft: #1c2a3d;
-  --tag-bg: #202836;
-  --tag-text: #c2cbd6;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --bg: #1c1710;
+  --bg-soft: #251f16;
+  --text: #f1ebe0;
+  --text-soft: #ada08b;
+  --border: #3b3323;
+  --accent: #e08a4f;
+  --accent-soft: #382a1b;
+  --tag-text: #e0a06a;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 :root[data-theme="light"] {
-  --bg: #ffffff;
-  --bg-soft: #f6f7f9;
-  --text: #1c2430;
-  --text-soft: #52606d;
-  --border: #e3e7ec;
-  --accent: #1d4e89;
-  --accent-soft: #eaf1fb;
-  --tag-bg: #eef2f7;
-  --tag-text: #3c4a5c;
-  --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --bg: #faf6ef;
+  --bg-soft: #f2ebdd;
+  --text: #221f19;
+  --text-soft: #6d6455;
+  --border: #e1d7c2;
+  --accent: #a8471f;
+  --accent-soft: #f3e2d2;
+  --tag-text: #7a4326;
+  --shadow: 0 1px 2px rgba(60, 43, 20, 0.05), 0 2px 6px rgba(60, 43, 20, 0.06);
 }
 
 * {
@@ -71,9 +71,8 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
-  line-height: 1.6;
+  font-family: var(--font-sans);
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -98,14 +97,14 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: saturate(180%) blur(10px);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
   border-bottom: 1px solid var(--border);
   transition: box-shadow 0.2s ease;
 }
 
 .site-nav.scrolled {
-  box-shadow: 0 2px 10px rgba(16, 24, 40, 0.08);
+  box-shadow: 0 2px 10px rgba(40, 28, 12, 0.06);
 }
 
 .site-nav .wrap {
@@ -114,15 +113,16 @@ a:hover {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem 1.5rem;
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .site-nav .brand {
-  font-weight: 700;
-  font-size: 1.05rem;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.15rem;
   color: var(--text);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 }
 
 .site-nav .brand:hover {
@@ -130,10 +130,17 @@ a:hover {
   color: var(--accent);
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+
 .site-nav ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.6rem;
   margin: 0;
   padding: 0;
   flex-wrap: wrap;
@@ -141,10 +148,12 @@ a:hover {
 
 .site-nav a {
   color: var(--text-soft);
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding-bottom: 2px;
-  border-bottom: 2px solid transparent;
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
 }
 
 .site-nav a:hover {
@@ -153,28 +162,21 @@ a:hover {
 }
 
 .site-nav a.current {
-  color: var(--text);
+  color: var(--accent);
   border-bottom-color: var(--accent);
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
 }
 
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 1.9rem;
+  height: 1.9rem;
   border-radius: 50%;
   border: 1px solid var(--border);
-  background: var(--bg-soft);
+  background: transparent;
   color: var(--text);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   line-height: 1;
   cursor: pointer;
   padding: 0;
@@ -187,93 +189,93 @@ a:hover {
 /* ---------- Hero ---------- */
 
 .hero {
-  padding: 3rem 0 2rem;
+  padding: 4rem 0 2.5rem;
   display: flex;
-  gap: 2rem;
+  gap: 2.75rem;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .hero img {
-  width: 168px;
-  height: 168px;
+  width: 164px;
+  height: 164px;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  outline: 1px solid var(--accent);
+  outline-offset: 7px;
   flex-shrink: 0;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: outline-offset 0.25s ease;
 }
 
 .hero img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 0 5px var(--accent-soft), var(--shadow);
+  outline-offset: 10px;
 }
 
 .hero .intro {
   flex: 1;
-  min-width: 260px;
+  min-width: 280px;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 0.7rem;
 }
 
 .hero h1 {
-  margin: 0 0 0.2rem;
-  font-size: 2rem;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 4.6vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4rem;
 }
 
 .hero .role {
   color: var(--text-soft);
-  font-size: 1.05rem;
-  margin-bottom: 0.9rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.15rem;
+  margin-bottom: 1.2rem;
+}
+
+.lede {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.1rem;
+  font-size: 1.02rem;
 }
 
 .links-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 0.9rem;
+  align-items: center;
+  gap: 0.5rem 1.2rem;
+  margin-top: 1.3rem;
 }
 
 .pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 0.88rem;
-  font-weight: 500;
   color: var(--text);
-  background: var(--bg-soft);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
 }
 
 .pill:hover {
-  border-color: var(--accent);
   color: var(--accent);
+  border-bottom-color: var(--accent);
   text-decoration: none;
-}
-
-/* ---------- Job market banner ---------- */
-
-.jobmarket {
-  margin-top: 1.6rem;
-  padding: 0.85rem 1.1rem;
-  border: 1px solid var(--accent);
-  background: var(--accent-soft);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  font-size: 0.95rem;
-}
-
-.jobmarket strong {
-  color: var(--accent);
-}
-
-.jobmarket a {
-  font-weight: 600;
 }
 
 /* ---------- Sections ---------- */
@@ -283,54 +285,73 @@ main {
 }
 
 section {
-  margin-top: 2.6rem;
+  margin-top: 2.8rem;
 }
 
 section > h2 {
-  font-size: 1.25rem;
-  letter-spacing: -0.01em;
-  margin: 0 0 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border);
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: -0.005em;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.7rem;
+  border-bottom: none;
+  position: relative;
+}
+
+section > h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 44px;
+  height: 3px;
+  background: var(--accent);
 }
 
 h1,
 h2,
 h3 {
   color: var(--text);
-  font-weight: 700;
 }
 
 .page-header {
-  padding: 2.6rem 0 0.5rem;
+  padding: 3rem 0 0.6rem;
 }
 
 .page-header h1 {
-  font-size: 1.9rem;
-  margin: 0 0 0.35rem;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 2.2rem;
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.01em;
 }
 
 .page-header p {
   color: var(--text-soft);
   margin: 0;
+  font-style: italic;
+  font-family: var(--font-serif);
 }
 
 .tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.6rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .tag-list li {
-  background: var(--tag-bg);
-  color: var(--tag-text);
-  padding: 0.35rem 0.75rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  color: var(--text-soft);
+  padding: 0.32rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .news-list {
@@ -341,41 +362,42 @@ h3 {
 
 .news-list li {
   display: flex;
-  gap: 0.9rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px dashed var(--border);
+  gap: 1.1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
   font-size: 0.96rem;
 }
 
-.news-list li:last-child {
-  border-bottom: none;
+.news-list li:first-child {
+  border-top: 1px solid var(--border);
 }
 
 .news-list .date {
   flex-shrink: 0;
-  width: 6.5em;
+  width: 4em;
   color: var(--text-soft);
-  font-size: 0.85rem;
-  font-variant-numeric: tabular-nums;
-  padding-top: 0.15rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  padding-top: 0.1rem;
 }
 
-/* ---------- Publication / entry cards ---------- */
+/* ---------- Publication / entry rows ---------- */
 
 .entry {
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg-soft);
-  margin-bottom: 0.9rem;
-  box-shadow: var(--shadow);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  padding: 1.3rem 0;
+  border-top: 1px solid var(--border);
+  margin-bottom: 0;
+  transition: padding-left 0.2s ease, box-shadow 0.2s ease;
+}
+
+.entry:last-child {
+  border-bottom: 1px solid var(--border);
 }
 
 .entry:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-  box-shadow: 0 4px 14px rgba(16, 24, 40, 0.1);
+  padding-left: 0.6rem;
+  box-shadow: inset 3px 0 0 var(--accent);
 }
 
 .entry.hidden {
@@ -386,82 +408,90 @@ h3 {
   display: none;
 }
 
+.entry-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0 0 0.3rem;
+}
+
+.entry-authors {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  margin: 0 0 0.15rem;
+}
+
+.entry-authors .me {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.entry-venue {
+  font-size: 0.82rem;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-soft);
+  margin: 0.35rem 0 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.08rem 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-right: 0.5rem;
+}
+
+.entry-links a {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 1.2rem;
+}
+
 /* ---------- Filter row ---------- */
 
 .filter-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0 0 1.6rem;
+  gap: 1.6rem;
+  margin: 0 0 2rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .filter-btn {
-  padding: 0.35rem 0.85rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--bg-soft);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
   color: var(--text-soft);
-  font-size: 0.85rem;
-  font-weight: 600;
-  font-family: inherit;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0 0 0.8rem;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .filter-btn:hover {
-  border-color: var(--accent);
   color: var(--accent);
 }
 
 .filter-btn.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--bg);
-}
-
-.entry-title {
-  font-weight: 700;
-  font-size: 1.02rem;
-  margin: 0 0 0.25rem;
-}
-
-.entry-authors {
-  color: var(--text-soft);
-  font-size: 0.92rem;
-  margin: 0 0 0.2rem;
-}
-
-.entry-authors .me {
-  color: var(--text);
-  font-weight: 600;
-}
-
-.entry-venue {
-  font-size: 0.92rem;
-  font-style: italic;
-  color: var(--text-soft);
-  margin: 0 0 0.4rem;
-}
-
-.badge {
-  display: inline-block;
-  background: var(--accent-soft);
   color: var(--accent);
-  border-radius: 5px;
-  padding: 0.1rem 0.5rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  font-style: normal;
-  margin-right: 0.4rem;
+  border-bottom-color: var(--accent);
 }
 
-.entry-links a {
-  font-size: 0.88rem;
-  font-weight: 600;
-  margin-right: 1rem;
-}
-
-/* ---------- Simple lists (awards, talks) ---------- */
+/* ---------- Simple lists (education, awards, talks) ---------- */
 
 .simple-list {
   list-style: none;
@@ -471,33 +501,36 @@ h3 {
 
 .simple-list li {
   display: flex;
-  gap: 1rem;
-  padding: 0.55rem 0;
+  gap: 1.2rem;
+  padding: 0.85rem 0;
   border-bottom: 1px solid var(--border);
   font-size: 0.95rem;
   align-items: baseline;
 }
 
-.simple-list li:last-child {
-  border-bottom: none;
+.simple-list li:first-child {
+  border-top: 1px solid var(--border);
 }
 
 .simple-list .when {
   flex-shrink: 0;
-  width: 8em;
+  width: 8.5em;
   color: var(--text-soft);
-  font-size: 0.85rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.92rem;
 }
 
 .simple-list .what strong {
   color: var(--text);
+  font-weight: 700;
 }
 
 .simple-list .what .meta {
   display: block;
   color: var(--text-soft);
-  font-size: 0.88rem;
-  margin-top: 0.1rem;
+  font-size: 0.87rem;
+  margin-top: 0.15rem;
 }
 
 /* ---------- Skills grid ---------- */
@@ -505,27 +538,63 @@ h3 {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  gap: 1.4rem;
 }
 
 .skills-grid .block h3 {
-  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-soft);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--accent);
   margin: 0 0 0.5rem;
 }
 
 /* ---------- CV subsection helper ---------- */
 
 .subhead {
-  font-size: 1rem;
-  color: var(--accent);
-  margin: 1.6rem 0 0.6rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin: 1.8rem 0 0.8rem;
 }
 
 section > .subhead:first-of-type {
   margin-top: 0;
+}
+
+/* ---------- Job market banner ---------- */
+
+.jobmarket {
+  margin-top: 1.8rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--text);
+}
+
+.jobmarket::before {
+  content: "◆";
+  display: block;
+  color: var(--accent);
+  font-size: 0.55rem;
+  margin-bottom: 0.6rem;
+}
+
+.jobmarket strong {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.jobmarket a {
+  font-weight: 600;
 }
 
 /* ---------- Typewriter ---------- */
@@ -551,14 +620,14 @@ section > .subhead:first-of-type {
 
 .timeline {
   position: relative;
-  margin: 0.5rem 0 1rem 0.4rem;
-  padding-left: 1.7rem;
-  border-left: 2px solid var(--border);
+  margin: 0.5rem 0 1rem 0.2rem;
+  padding-left: 2.3rem;
+  border-left: 1px solid var(--border);
 }
 
 .tl-item {
   position: relative;
-  padding-bottom: 2.4rem;
+  padding-bottom: 2.6rem;
   opacity: 1;
   transform: none;
 }
@@ -569,28 +638,29 @@ section > .subhead:first-of-type {
 
 .tl-dot {
   position: absolute;
-  left: -2.05rem;
-  top: 0.35rem;
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
+  left: -2.42rem;
+  top: 0.55rem;
+  width: 9px;
+  height: 9px;
   background: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-soft);
+  transform: rotate(45deg);
+  box-shadow: 0 0 0 5px var(--bg);
 }
 
 .tl-year {
-  font-size: 1.35rem;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.7rem;
   letter-spacing: -0.01em;
   color: var(--text);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .tl-events {
   margin: 0;
   padding-left: 1.1rem;
   color: var(--text-soft);
-  font-size: 0.95rem;
+  font-size: 0.94rem;
 }
 
 .tl-events li {
@@ -599,6 +669,7 @@ section > .subhead:first-of-type {
 
 .tl-events strong {
   color: var(--text);
+  font-weight: 700;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -617,9 +688,11 @@ section > .subhead:first-of-type {
 
 footer {
   border-top: 1px solid var(--border);
-  padding: 2rem 0 3rem;
+  padding: 2.2rem 0 3rem;
   color: var(--text-soft);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  font-family: var(--font-serif);
 }
 
 footer a {
@@ -635,6 +708,9 @@ footer a {
   .hero .links-row,
   .hero .role {
     justify-content: center;
+  }
+  .lede {
+    text-align: left;
   }
   .links-row {
     justify-content: center;
@@ -656,13 +732,13 @@ footer a {
   position: fixed;
   right: 1.25rem;
   bottom: 1.25rem;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   border: 1px solid var(--border);
-  background: var(--bg-soft);
+  background: var(--bg);
   color: var(--text);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   cursor: pointer;
   box-shadow: var(--shadow);
   opacity: 0;
@@ -708,7 +784,7 @@ footer a {
     break-inside: avoid;
   }
   .entry:hover {
-    transform: none;
+    padding-left: 0;
     box-shadow: none;
   }
   main {
