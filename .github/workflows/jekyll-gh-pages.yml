@@ -28,6 +28,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Inject Gemini API key
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python3 -c "
+          import os
+          path = 'ai-suvadip.js'
+          key = os.environ.get('GEMINI_API_KEY', '')
+          with open(path) as f:
+              content = f.read()
+          content = content.replace('__GEMINI_API_KEY__', key)
+          with open(path, 'w') as f:
+              f.write(content)
+          "
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll

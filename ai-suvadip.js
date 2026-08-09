@@ -7,19 +7,26 @@
    1. Get a free API key at https://aistudio.google.com/apikey
       (no credit card required).
    2. In Google AI Studio / Google Cloud Console, restrict the
-      key to your site's domain (HTTP referrer restriction),
-      e.g. "https://suvadip2776.github.io/*" — this is what
-      keeps the key safe even though it's visible in this
-      public JS file. Client-side calls from a static site have
-      no way to hide the key entirely; restriction is the fix.
-   3. Paste the key below in place of the placeholder.
+      key to this site's domain (HTTP referrer restriction),
+      e.g. "https://suvadip2776.github.io/*". Note this is a
+      deterrent, not airtight security — a Referer header can be
+      spoofed by a non-browser client — but it stops casual
+      scraping/reuse, and there's no billing risk either way
+      since this is a free tier with no card attached.
+   3. Add the key as a GitHub repository secret named
+      GEMINI_API_KEY (Settings -> Secrets and variables ->
+      Actions -> New repository secret). The build workflow
+      substitutes it into the placeholder below at deploy time,
+      so the raw key is never committed to git history — it only
+      ever exists in the built page's JS, same as any client-side
+      key must.
    --------------------------------------------------------- */
 
 (function () {
   "use strict";
 
-  var GEMINI_API_KEY = "PASTE_YOUR_GEMINI_API_KEY_HERE";
-  var GEMINI_MODEL = "gemini-2.5-flash";
+  var GEMINI_API_KEY = "__GEMINI_API_KEY__";
+  var GEMINI_MODEL = "gemini-3.5-flash-lite";
   var MAX_TURNS_PER_SESSION = 20;
 
   var EMAIL = "ss2776@cornell.edu";
@@ -221,7 +228,7 @@
       var value = input.value.trim();
       if (!value) return;
 
-      if (!GEMINI_API_KEY || GEMINI_API_KEY.indexOf("PASTE_") === 0) {
+      if (!GEMINI_API_KEY || GEMINI_API_KEY.indexOf("__GEMINI") === 0) {
         addMessage(value, "user", false);
         input.value = "";
         addMessage(
