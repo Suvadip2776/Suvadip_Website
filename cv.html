@@ -43,6 +43,26 @@
         <li><a href="teaching.html">Teaching</a></li>
       </ul>
       <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+      <div id="ai-suvadip" class="chat-widget">
+        <button type="button" id="chat-launcher" class="chat-launcher" aria-expanded="false" aria-controls="chat-panel">
+          <span class="chat-launcher-label">Ask Suvadip</span>
+        </button>
+        <div id="chat-panel" class="chat-panel" hidden>
+          <div class="chat-header">
+            <div>
+              <p class="chat-title">Ask Suvadip</p>
+              <p class="chat-subtitle">Academic FAQ assistant</p>
+            </div>
+            <button type="button" id="chat-close" class="chat-close" aria-label="Close chat">&times;</button>
+          </div>
+          <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
+          <div id="chat-suggestions" class="chat-suggestions"></div>
+          <form id="chat-form" class="chat-input-row">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Ask about research, education, CV..." autocomplete="off" />
+            <button type="submit" class="chat-send" aria-label="Send">Send</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
@@ -194,27 +214,6 @@
     <a href="https://github.com/Suvadip2776/Suvadip_Website">Site source</a>
   </div>
 </footer>
-
-<div id="ai-suvadip" class="chat-widget">
-  <button type="button" id="chat-launcher" class="chat-launcher" aria-expanded="false" aria-controls="chat-panel">
-    <span class="chat-launcher-label">Ask AI Suvadip</span>
-  </button>
-  <div id="chat-panel" class="chat-panel" hidden>
-    <div class="chat-header">
-      <div>
-        <p class="chat-title">AI Suvadip</p>
-        <p class="chat-subtitle">Academic FAQ assistant</p>
-      </div>
-      <button type="button" id="chat-close" class="chat-close" aria-label="Close chat">&times;</button>
-    </div>
-    <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
-    <div id="chat-suggestions" class="chat-suggestions"></div>
-    <form id="chat-form" class="chat-input-row">
-      <input type="text" id="chat-input" class="chat-input" placeholder="Ask about research, education, CV..." autocomplete="off" />
-      <button type="submit" class="chat-send" aria-label="Send">Send</button>
-    </form>
-  </div>
-</div>
 
 <button type="button" class="back-to-top" aria-label="Back to top">↑</button>
 <script src="script.js" defer></script>

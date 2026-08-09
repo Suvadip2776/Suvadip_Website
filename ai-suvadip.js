@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------
-   "AI Suvadip" — a scripted FAQ widget, not a real LLM.
+   "Ask Suvadip" — a scripted FAQ widget, not a real LLM.
    Matches visitor questions against a fixed knowledge base
    drawn entirely from the CV content already on this site, so
    it can only ever talk about Suvadip's academic background —
@@ -17,7 +17,7 @@
     {
       keywords: ["hello", "hi", "hey", "greetings", "howdy"],
       answer:
-        "Hi! I'm <strong>AI Suvadip</strong> — a simple FAQ assistant, not a general AI. I can answer questions about Suvadip's academic background: research, education, publications, awards, teaching, and how to reach him. What would you like to know?",
+        "Hi! I'm <strong>Ask Suvadip</strong> — a simple FAQ assistant, not a general AI. I can answer questions about Suvadip's academic background: research, education, publications, awards, teaching, and how to reach him. What would you like to know?",
     },
     {
       keywords: ["what are you", "are you real", "are you ai", "are you a bot", "chatbot"],
@@ -179,7 +179,7 @@
       if (!opened) {
         opened = true;
         addMessage(
-          "Hi! I'm <strong>AI Suvadip</strong> — a simple FAQ assistant covering Suvadip's academic background. Ask me about his research, education, publications, awards, or teaching.",
+          "Hi! I'm <strong>Ask Suvadip</strong> — a simple FAQ assistant covering Suvadip's academic background. Ask me about his research, education, publications, awards, or teaching.",
           "bot",
           true
         );
