@@ -533,6 +533,67 @@ h3 {
   margin-top: 0.15rem;
 }
 
+/* ---------- Blog / prose / placeholders ---------- */
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-list li:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.post-list a {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.post-list a:hover {
+  color: var(--accent);
+}
+
+.post-list .post-date {
+  flex-shrink: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+}
+
+.prose {
+  max-width: 640px;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.prose p {
+  margin: 0 0 1.1rem;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.placeholder-note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-soft);
+}
+
 /* ---------- Skills grid ---------- */
 
 .skills-grid {

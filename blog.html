@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      if (t) document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blog — Suvadip Sana</title>
+<meta name="description" content="Occasional writing from Suvadip Sana — research notes, conference reflections, and more." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="prof_profile_pic.jpeg" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Blog — Suvadip Sana" />
+<meta property="og:description" content="Occasional writing from Suvadip Sana — research notes, conference reflections, and more." />
+<meta property="og:url" content="https://suvadip2776.github.io/Suvadip_Website/blog.html" />
+<meta property="og:image" content="https://suvadip2776.github.io/Suvadip_Website/prof_profile_pic.jpeg" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Blog — Suvadip Sana" />
+<meta name="twitter:description" content="Occasional writing from Suvadip Sana — research notes, conference reflections, and more." />
+<meta name="twitter:image" content="https://suvadip2776.github.io/Suvadip_Website/prof_profile_pic.jpeg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">Suvadip Sana</a>
+    <div class="nav-right">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="miscellaneous.html">Miscellaneous</a></li>
+      </ul>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<header class="wrap page-header">
+  <h1>Blog</h1>
+  <p>Occasional writing — research notes, conference reflections, and whatever else feels worth sharing.</p>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <ul class="post-list">
+      <li>
+        <a href="blog-welcome-to-the-blog.html">Welcome to the Blog</a>
+        <span class="post-date">August 2026</span>
+      </li>
+    </ul>
+  </section>
+
+  <p><a href="miscellaneous.html">← Back to Miscellaneous</a></p>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 Suvadip Sana. Built with care ·
+    <a href="https://github.com/Suvadip2776/Suvadip_Website">Site source</a>
+  </div>
+</footer>
+
+<button type="button" class="back-to-top" aria-label="Back to top">↑</button>
+<script src="script.js" defer></script>
+</body>
+</html>
